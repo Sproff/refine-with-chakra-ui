@@ -1,8 +1,8 @@
 import React from "react";
 import { AppProps } from "next/app";
 import type { NextPage } from "next";
-import { Refine, GitHubBanner } from "@refinedev/core";
-import { DevtoolsPanel, DevtoolsProvider } from "@refinedev/devtools";
+import { Refine } from "@refinedev/core";
+import { DevtoolsProvider } from "@refinedev/devtools";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import { notificationProvider, ThemedLayoutV2 } from "@refinedev/chakra-ui";
 import routerProvider, {
@@ -12,8 +12,8 @@ import routerProvider, {
 
 import dataProvider from "@refinedev/simple-rest";
 import { ChakraProvider } from "@chakra-ui/react";
-import { Header } from "@components/header";
 import { customTheme } from "styles/themes";
+import { RefineWithChakraUIComp } from "@components/RefineWithChakraUI";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 
@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
     }
 
     return (
-      <ThemedLayoutV2 Header={() => <Header sticky />}>
+      <ThemedLayoutV2>
         <Component {...pageProps} />
       </ThemedLayoutV2>
     );
@@ -40,7 +40,6 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
 
   return (
     <>
-      <GitHubBanner />
       <RefineKbarProvider>
         <ChakraProvider theme={customTheme}>
           <DevtoolsProvider>
@@ -54,13 +53,13 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout): JSX.Element {
                 useNewQueryKeys: true,
                 projectId: "eqFYS5-d7NFAr-sTb9jl",
               }}
+              resources={[{ name: "posts", list: RefineWithChakraUIComp }]}
             >
               {renderComponent()}
               <RefineKbar />
               <UnsavedChangesNotifier />
               <DocumentTitleHandler />
             </Refine>
-            <DevtoolsPanel />
           </DevtoolsProvider>
         </ChakraProvider>
       </RefineKbarProvider>
