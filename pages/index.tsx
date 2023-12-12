@@ -1,8 +1,12 @@
-import { NavigateToResource } from "@refinedev/nextjs-router";
+import { Box } from "@chakra-ui/react";
+import { RefineWithChakraUIComp } from "@components/RefineWithChakraUI";
 
-export default function Home() {
-        return <NavigateToResource resource="blog_posts" />;
-    
+export default function Index() {
+  return (
+    <Box p="3rem">
+      <RefineWithChakraUIComp />
+    </Box>
+  );
 }
 
-Home.noLayout = true;
+Index.noLayout = true;

@@ -1,12 +1,3 @@
-
-
-
-
-
-
-    module.exports = {
-        transpilePackages: [
-            "@refinedev/nextjs-router", 
-        ],
-    };
-
+module.exports = {
+  transpilePackages: ["@refinedev/nextjs-router"],
+};
